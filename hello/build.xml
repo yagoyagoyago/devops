@@ -5,8 +5,6 @@
     <property name="build" location="build"/>
     <property name="classes" location="${build}/classes"/>
     <property name="releases" location="/var/www/html/releases"/>
-    <property name="build_num" location="build"/>
-
     <!-- define all targets -->
     <target name="compile">
     <mkdir dir="${classes}"/>
@@ -18,7 +16,7 @@
     <target name="package" depends="compile">
 	<jar destfile="${build}/${ant.project.name}-Ver.${build_num}.jar" basedir="${classes}">
 		<manifest>
-			<attribute name="Main–Class" value="test.HelloWorld"/>
+			<attribute name="Main–Class" value="${ant.project.name}"/>
 		</manifest>
 	</jar>
     </target>
