@@ -13,8 +13,8 @@
     <target name="run" depends="compile">
 		<java classname="${ant.project.name}" classpath="${classes}"/>
     </target>
-    <target name="package" depends="compile">
-	<jar destfile="${build}/${ant.project.name}.jar" basedir="${classes}">
+    <target name="package" depends="clean,compile">
+	<jar destfile="${build}/${ant.project.name}-Ver.${buld_num}.jar" basedir="${classes}">
 		<manifest>
 			<attribute name="Main–Class" value="${ant.project.name}"/>
 		</manifest>
