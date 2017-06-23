@@ -4,7 +4,9 @@
     <property name="src" location="src"/>
     <property name="build" location="build"/>
     <property name="classes" location="${build}/classes"/>
-	<property name="releases" location="/var/www/html/releases"/>
+    <property name="releases" location="/var/www/html/releases"/>
+    <property name="build_num" location="build"/>
+
     <!-- define all targets -->
     <target name="compile">
     <mkdir dir="${classes}"/>
@@ -13,16 +15,15 @@
     <target name="run" depends="compile">
 		<java classname="${ant.project.name}" classpath="${classes}"/>
     </target>
-    <target name="package" depends="clean,compile">
-	<jar destfile="${build}/${ant.project.name}-Ver.${buld_num}.jar" basedir="${classes}">
+    <target name="package" depends="compile">
+	<jar destfile="${build}/${ant.project.name}-Ver.${build_num}.jar" basedir="${classes}">
 		<manifest>
-			<attribute name="Main–Class" value="${ant.project.name}"/>
+			<attribute name="Main–Class" value="test.HelloWorld"/>
 		</manifest>
 	</jar>
     </target>
 	<target name="dist" depends="package">
 		<zip destfile="${releases}/${ant.project.name}.zip" basedir="${build}"/>
-		
 	</target>
     <target name="clean">
 	     <delete dir="${build}"/>
